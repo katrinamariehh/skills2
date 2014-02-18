@@ -19,6 +19,21 @@ def count_unique(some_iterable):
 # Given two lists, (without using the keyword 'in' or the method '.index()') 
 # return a list of all common items shared between both lists
 def common_items(list1, list2):
+    # for each item in list 1
+    in_both = []
+    for i in list1:
+    # compare to each item in list 2
+        for j in list2:
+            if j == i:
+                in_both.append(i)
+    return in_both
+    # and add to in_both if it comes upon an equivalent value in list 2
+
+
+# Given two lists, (without using the keyword 'in' or the method 'index') 
+# return a list of all common items shared between both lists. This time, 
+# use a dictionary as part of your solution.
+def common_items2(list1, list2):
     # create a dictionary with the unique items of each list
     list_1_dict = count_unique(list1)
     list_2_dict = count_unique(list2)
@@ -34,10 +49,4 @@ def common_items(list1, list2):
         if value == 2:
             items.append(key)
     return items
-
-# Given two lists, (without using the keyword 'in' or the method 'index') 
-# return a list of all common items shared between both lists. This time, 
-# use a dictionary as part of your solution.
-def common_items2(list1, list2):
-    return []
 
