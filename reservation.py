@@ -54,39 +54,54 @@ import datetime
 
 def parse_one_record(line):
     """Take a line from reservations.csv and return a dictionary representing that record. (hint: use the datetime type when parsing the start and end date columns)"""
-    return {}
+    # {'room number': #, 'start date': "", 'end date': ""}
+    # read the line
+    # split on the commas and set equal to variable cur_line
+    line = line.split(',')
+    for item in line:
+        item = item.strip()
+    # iterate over the range(1, len(line)) to split the second and third items on the slash
+    for i in range(1, len(line)):
+        line[i] = line[i].split('/')
+    # to store as a datetime object
+    # with an empty dictionary 
+    dict = {}
+    dict['room number'] = int(line[0])
+    dict['start date'] = datetime.datetime(int(line[1][2]), int(line[1][0]), int(line[1][1]))
+    dict['end date'] = datetime.datetime(int(line[2][2]), int(line[2][0]), int(line[2][1]))
+    return dict
 
-def read_units():
-    """Read in the file units.csv and returns a list of all known units."""
-    return []
+# def read_units():
+#     """Read in the file units.csv and returns a list of all known units."""
+#     return []
 
-def read_existing_reservations():
-    """Reads in the file reservations.csv and returns a list of reservations."""
-    return []
+# def read_existing_reservations():
+#     """Reads in the file reservations.csv and returns a list of reservations."""
+#     return []
 
-def available(units, reservations, start_date, occupants, stay_length):
-    unit_id = 0
-    print "Unit %d is available"%unit_id
+# def available(units, reservations, start_date, occupants, stay_length):
+#     unit_id = 0
+#     print "Unit %d is available"%unit_id
 
-def reserve(units, reservations, unit_id, start_date, stay_length):
-    print "Successfully reserved"
+# def reserve(units, reservations, unit_id, start_date, stay_length):
+#     print "Successfully reserved"
 
-def main():
-    units = read_units()
-    reservations = read_existing_reservations()  
+# def main():
+#     units = read_units()
+#     reservations = read_existing_reservations()  
 
-    while True:
-        command = raw_input("SeaBnb> ")
-        cmd = command.split()
-        if cmd[0] == "available":
-            # look up python variable arguments for explanation of the *
-            available(units, reservations, *cmd[1:])
-        elif cmd[0] == "reserve":
-            reserve(units, reservations, *cmd[1:])
-        elif cmd[0] == "quit":
-            sys.exit(0)
-        else:
-            print "Unknown command"
+#     while True:
+#         command = raw_input("SeaBnb> ")
+#         cmd = command.split()
+#         if cmd[0] == "available":
+#             # look up python variable arguments for explanation of the *
+#             available(units, reservations, *cmd[1:])
+#         elif cmd[0] == "reserve":
+#             reserve(units, reservations, *cmd[1:])
+#         elif cmd[0] == "quit":
+#             sys.exit(0)
+#         else:
+#             print "Unknown command"
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
